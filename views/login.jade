@@ -1,0 +1,16 @@
+extends layout.jade
+
+block content
+    .row
+        .col-md-4
+            form(action='login', method='post')
+                .row
+                    .col-md-8            
+                        .form-group.form-group-default
+                            label Username                    
+                            input.form-control(type='text', name='username')
+                        .form-group.form-group-default
+                            label Password
+                            input.form-control(type='text', name='password')
+                    .col-md-4
+                        input.form-control(type='submit', value='Log In')                

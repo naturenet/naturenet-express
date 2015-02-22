@@ -1,0 +1,11 @@
+div.panel
+    ul.nav.nav-tabs
+        li
+            a.button(href='/notes') Observations
+        li 
+            a.button(href='/activities') Activities            
+        if user            
+            li 
+                a.button(href='/home')= user.username
+            a(href='/signout') signout
+            

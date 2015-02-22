@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  div.container
+    h2 Account
+    div.row
+      div.six.columns
+        div.row Username: #{user.username}
+        div.row Email: #{user.email}
+    h2 Observations by #{user.username}
+    each note in notes
+      div= note.content
+
+    

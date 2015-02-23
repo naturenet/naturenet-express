@@ -1,11 +1,14 @@
 div.panel
     ul.nav.nav-tabs
         li
-            a.button(href='/notes') Observations
+            a.button(href='/note') Observations
         li 
-            a.button(href='/activities') Activities            
+            a.button(href='') Activities            
         if user            
             li 
                 a.button(href='/home')= user.username
             a(href='/signout') signout
+        else
+            li 
+                a.button(href='/login') Login
             

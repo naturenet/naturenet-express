@@ -45,4 +45,7 @@ require('./lib/passport')(app)
 var routes = require('./routes/account')()
 app.use('/', routes)
 
+var routes = require('./routes/note')()
+app.use('/note', routes)
+
 module.exports = app

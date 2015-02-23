@@ -1,39 +1,37 @@
 var express = require('express')
 var router = express.Router()
 
-// Simple route middleware to ensure user is authenticated.
-//   Use this route middleware on any resource that needs to be protected.  If
-//   the request is authenticated (typically via a persistent login session),
-//   the request will proceed.  Otherwise, the user will be redirected to the
-//   login page.
-function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect('/note/login')
-}
+var ensureAuthenticated = require('./auth')
 
-module.exports = function(passport) {
+module.exports = function() {
 
-    router.get('/login', function(req, res) {
-        res.status(200).send('ok')
-    })
+    router.get('/', function(req, res) {
 
-    // // router.put('/login',  /* Handle Login POST */
-    router.put('/login', passport.authenticate('login', {
-        successRedirect: '/note/home',
-        failureRedirect: '/note/login',
-        failureFlash: true
-    }))
+        req.db.Note.find({}, {}, {
+                sort: {
+                    'created_at': -1
+                }
+            },
+            function(error, results) {
 
-    router.get('/home', ensureAuthenticated, function(req, res) {
+                if (error) {
+                    console.log(error)
+
+                } else {
+
+                    console.log(results.length)
+                }
+
+                res.render('notes', {
+                    notes: results
+                })
+
+            })
         // console.log('req.session.passport:', req.session.passport)
         // console.log('isAuthenticated', req.isAuthenticated())
-        console.log('user', req.user)
-        res.status(200).send('ok')
+        // console.log('user', req.user)
+        // res.status(200).send('ok')
     })
-
-
 
     // router.post('/login', function(req, res) {
 

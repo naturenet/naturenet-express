@@ -1,0 +1,25 @@
+mixin note(note)
+  .gallery-item(data-width='1', data-height='1')
+      if (note.medias.length > 0)            
+        - var m = note.medias[0]
+        - var url = m.link.replace('upload/','upload/w_500,c_fit/')      
+        img.image-responsive-height.photo(src=url, width="500") 
+      .overlayer.bottom-left.full-width
+        .overlayer-wrapper.item-info
+          .gradient-grey.p-l-20.p-r-20.p-t-20.p-b-5
+            div
+              p.pull-left.bold.text-white.fs-14.p-t-10= note.content
+              h5.pull-right.semi-bold.text-white.font-montserrat.bold= note.context.title
+              .clearfix                 
+            .m-t-10
+              .inline.m-l-10
+                p.no-margin.text-white.fs-12 Submitted by #{note.account.username}                     
+                p.rating
+                  i.fa.fa-star.rated                        
+                  i.fa.fa-star.rated            
+                  i.fa.fa-star.rated            
+                  i.fa.fa-star.rated            
+                  i.fa.fa-star
+              .pull-right.m-t-10
+                button.btn.btn-white.btn-xs.btn-mini.bold.fs-14(type='button') +          
+              .clearfix

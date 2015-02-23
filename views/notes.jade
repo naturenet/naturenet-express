@@ -1,0 +1,10 @@
+extends layout
+
+block content    
+    include item
+    .container-fluid.container-fixed-lg.sm-p-l-20.sm-p-r-20
+        .gallery
+            each note in notes
+                if note.medias.length > 0
+                    +note(note)
+        

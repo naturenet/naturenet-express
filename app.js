@@ -41,11 +41,17 @@ app.use(db())
 // Use Passports
 require('./lib/passport')(app)
 
+app.use(function(req, res, next) {
+  res.locals.user = req.user
+  next()
+})
+
 // Load Routes
 var routes = require('./routes/account')()
 app.use('/', routes)
 
 var routes = require('./routes/note')()
 app.use('/note', routes)
+
 
 module.exports = app

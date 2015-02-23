@@ -15,15 +15,15 @@ module.exports = function() {
             function(error, results) {
 
                 if (error) {
-                    console.log(error)
-
+                    // console.log(error)
+// 
                 } else {
 
-                    console.log(results.length)
+                    // console.log(results.length)
                 }
 
                 res.render('notes', {
-                    notes: results
+                    notes: results                    
                 })
 
             })
